@@ -1,0 +1,45 @@
+<h1 id="2026">2026备战天梯</h1>
+<h2 id="knowledge-points">knowledge points:</h2>
+<blockquote>
+<p>一行多类型输入：name,breathe,maibo=input().split() </p>
+<p>输出变量带字符：print(f"  {s}")</p>
+<p>矩阵相乘算法：</p>
+</blockquote>
+<div class="codehilite"><pre><span></span><code><span class="k">for</span><span class="p">(</span><span class="nc">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">Ra</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="w">        </span><span class="k">for</span><span class="p">(</span><span class="nc">int</span><span class="w"> </span><span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">j</span><span class="o">&lt;</span><span class="n">Cb</span><span class="p">;</span><span class="n">j</span><span class="o">++</span><span class="p">)</span>
+<span class="w">            </span><span class="k">for</span><span class="p">(</span><span class="nc">int</span><span class="w"> </span><span class="n">k</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">k</span><span class="o">&lt;</span><span class="n">Ca</span><span class="p">;</span><span class="n">k</span><span class="o">++</span><span class="p">)</span><span class="err">{</span>
+<span class="w">                </span><span class="n">res</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]+=</span><span class="n">a</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">k</span><span class="o">]*</span><span class="n">b</span><span class="o">[</span><span class="n">k</span><span class="o">][</span><span class="n">j</span><span class="o">]</span><span class="p">;</span>
+<span class="w">            </span><span class="err">}</span>
+</code></pre></div>
+
+<blockquote>
+<p>pair<int,string>  将不同类型的数据组合</p>
+<p>Lambda排序</p>
+</blockquote>
+<div class="codehilite"><pre><span></span><code><span class="nv">sort</span><span class="ss">(</span>容器.<span class="nv">begin</span><span class="ss">()</span>,<span class="w"> </span>容器.<span class="k">end</span><span class="ss">()</span>,<span class="w"> </span>[]<span class="ss">(</span>类型<span class="w"> </span><span class="nv">a</span>,<span class="w"> </span>类型<span class="w"> </span><span class="nv">b</span><span class="ss">)</span><span class="w"> </span>{
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nv">a</span><span class="o">&lt;</span><span class="nv">b</span><span class="c1">;</span>
+}<span class="ss">)</span><span class="c1">;</span>
+</code></pre></div>
+
+<blockquote>
+<p>空列表不能res[i].append(),去掉i</p>
+<p>输出小数 print(format(num,'.2f'))</p>
+</blockquote>
+<h2 id="l1-049"><mark>L1-049 天梯赛座位分配</mark></h2>
+<p>题目：有 N 所学校参赛，第 i 所学校有 M[i] 支队伍，每队 10 位参赛选手。从第 1 所学校开始，各校的第 1 位队员顺次入座，然后是第2所学校的第 2 位队员…… 以此类推。如果最后只剩下 1 所学校的队伍还没有分配座位，则需要安排他们的队员隔位就坐。</p>
+<p><strong>思路：刚开始的思路就是根据等差数列编写各学校的编号，比普通的循环简单，实现比较难，难点是等差的数字一直在变，要先走完的高校-1，还是语法不太熟练，有思路但是写不出来。看了题解和我思路差不多，比我的更清楚</strong></p>
+<p><strong>m[i]——第i所高校有m[i]支队伍</strong></p>
+<p><strong>dt——间隔的座位</strong></p>
+<p><strong>v——指向人数最少的高校的st下标</strong></p>
+<p><strong>st[v]——所有高校里面队伍最少的那个高校的编号</strong></p>
+<p><strong>k——当前高校数</strong></p>
+<p><strong>外层循环i表示第几个高校，</strong></p>
+<p>**    内层1x表示第几支队伍，**</p>
+<p>**        内层11j表示队伍人数，不超过10人，**</p>
+<p>**         while循环判断是否有走完的高校(3 3 4 2)**</p>
+<p>**                    进入while，高校数-1（会出现k=2正在输出的高校和编号大的高校）**</p>
+<p>**                    此时正在输出的高校输出完了，k=2，st[v].first=1&lt;2**</p>
+<p>**                        id--(剩下的编号大的那个高校，只剩他自己，间隔2位)**</p>
+<p>针对代码中出现的pair和vector,为什么要使用这两个STL函数？</p>
+<p>首先，pair可以将不同类型的数据整合在一起，将题目中的高校顺序和高校中参加的队伍数封装，缺点是pair只能整合一组数据，例如（1，3），后面的数据不能都存进去，筛选出参赛队伍最少的高校又需要排序</p>
+<p>所以，使用vector，把所有数据储存，并进行排序</p>
